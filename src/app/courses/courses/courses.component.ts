@@ -23,7 +23,7 @@ import { CoursesService } from '../services/courses.service';
 export class CoursesComponent implements OnInit {
 
   courses$: Observable<Course[]>;
-  displayedColumns: string[] = [ 'name', 'category' ];
+  displayedColumns: string[] = [ '_id', 'name', 'category' ];
 
   constructor(
     private coursesService: CoursesService,
