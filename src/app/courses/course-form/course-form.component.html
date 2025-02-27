@@ -1,0 +1,41 @@
+<mat-card class="example-card" appearance="outlined">
+
+  <mat-toolbar color="primary">Detalhes do Curso</mat-toolbar>
+
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup] = "form" class="min-width">
+
+      <!-- Campo Nome -->
+      <mat-form-field class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" formControlName="name">
+        <mat-hint>Dica</mat-hint>
+      </mat-form-field>
+
+      <!-- Campo Categoria -->
+      <mat-form-field class="full-width">
+        <mat-label>Categoria</mat-label>
+
+        <mat-select formControlName="category">
+          <mat-option value="null"> </mat-option>
+          <mat-option value="front-end">Front-End</mat-option>
+          <mat-option value="back-end">Back-End</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

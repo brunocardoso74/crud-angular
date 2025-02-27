@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'courses' },
-  {
+  /*{
     path: 'courses',
     loadComponent: () => import('./courses/courses/courses.component').then(m => m.CoursesComponent)
-  },
+  },*/
   {
-    path: 'coursess',
+    path: 'courses',
     loadChildren:() => import('./courses/courses-routing.module').then(m => m.CoursesRoutingModule)
   }
 ];
