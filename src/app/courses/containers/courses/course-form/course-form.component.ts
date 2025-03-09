@@ -1,12 +1,13 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, UntypedFormArray, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
 import { AppMaterialModule } from '../../../../shared/app-material/app-material.module';
 import { SharedModule } from '../../../../shared/shared.module';
 import { Course } from '../../../model/course';
+import { Lesson } from '../../../model/lesson';
 import { CoursesService } from '../../../services/courses.service';
 
 @Component({
@@ -22,7 +23,7 @@ import { CoursesService } from '../../../services/courses.service';
 })
 export class CourseFormComponent {
 
-  form: FormGroup;
+  form!: FormGroup;
 
   private _snackBar = inject(MatSnackBar);
 
@@ -33,23 +34,42 @@ export class CourseFormComponent {
     private route: ActivatedRoute
     ) {
     console.log('constructor');
-
-    this.form = this.formBuilder.group({
-      _id: [''],
-      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      category: ['', [Validators.required]]
-    });
   }
 
   ngOnInit(): void {
     const course: Course = this.route.snapshot.data['course'];
     console.log(course);
 
-    this.form.setValue ({
-      _id: course._id,
-      name: course.name,
-      category: course.category
+    this.form = this.formBuilder.group({
+      _id: [course._id],
+      name: [course.name, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      category: [course.category, [Validators.required]],
+      lessons: this.formBuilder.array(this.retrieveLessons(course))
     });
+    console.log(this.form);
+    console.log(this.formBuilder);
+  }
+
+  private retrieveLessons(course: Course) {
+    const lessons = [];
+    if (course?.lessons) {
+      course.lessons.forEach(lesson => lessons.push(this.createLesson(lesson)));
+      } else {
+        lessons.push(this.createLesson());
+    }
+    return lessons;
+  }
+
+  private createLesson(lesson: Lesson = {_id: '', name: '', youtubeUrl: ''}) {
+    return this.formBuilder.group({
+      _id: [lesson._id],
+      name: [lesson.name, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      youtubeUrl: [lesson.youtubeUrl, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
+    });
+  }
+
+  getLessonsFormArray() {
+    return (<UntypedFormArray>this.form.get('lessons')).controls;
   }
 
   onSubmit() {
