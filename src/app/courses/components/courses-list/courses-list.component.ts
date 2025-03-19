@@ -1,14 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { SharedModule } from '../../../shared/shared.module';
+
 import { Course } from '../../model/course';
-import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
+
+import { CategoryPipe } from '../../../shared/pipes/category.pipe';
 
 @Component({
   selector: 'app-courses-list',
   imports: [
     AppMaterialModule,
-    SharedModule],
+    CategoryPipe
+],
   templateUrl: './courses-list.component.html',
   styleUrl: './courses-list.component.scss'
 })

@@ -4,8 +4,8 @@ import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, UntypedFormArra
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
-import { AppMaterialModule } from '../../../../shared/app-material/app-material.module';
-import { SharedModule } from '../../../../shared/shared.module';
+
+
 import { Course } from '../../../model/course';
 import { Lesson } from '../../../model/lesson';
 import { CoursesService } from '../../../services/courses.service';

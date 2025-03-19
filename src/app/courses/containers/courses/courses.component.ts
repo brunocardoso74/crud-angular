@@ -5,9 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 
-import { AppMaterialModule } from '../../../shared/app-material/app-material.module';
+
 import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
-import { SharedModule } from '../../../shared/shared.module';
+
 import { CoursesListComponent } from '../../components/courses-list/courses-list.component';
 import { Course } from '../../model/course';
 import { CoursesService } from '../../services/courses.service';
@@ -18,13 +18,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-courses',
   imports: [
-    AppMaterialModule,
     AsyncPipe,
     CoursesListComponent,
     NgIf,
     SharedModule,
     MatPaginator
-  ],
+],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
