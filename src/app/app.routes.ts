@@ -1,7 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+//import { COURSES_ROUTES } from './courses/courses.routes';
 
-export const routes: Routes = [
+export const APP_ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'courses' },
   /*{
     path: 'courses',
@@ -9,14 +10,8 @@ export const routes: Routes = [
   },*/
   {
     path: 'courses',
-    loadChildren:() => import('./courses/courses-routing.module').then(m => m.CoursesRoutingModule)
+    loadChildren:() => import('./courses/courses.routes').then(m => m.COURSES_ROUTES)
   }
 ];
 
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-})
 
-
-export class AppRoutingModule {}
