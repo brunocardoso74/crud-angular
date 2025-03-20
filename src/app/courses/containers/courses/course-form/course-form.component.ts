@@ -1,4 +1,4 @@
-import { Location, NgFor, NgIf } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, UntypedFormArray, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,19 +22,17 @@ import { FormUtilsService } from '../../../../shared/services/form-utils.service
   selector: 'app-course-form',
   imports: [
     MatCardModule,
-        MatToolbarModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        NgIf,
-        MatSelectModule,
-        MatOptionModule,
-        MatButtonModule,
-        MatIconModule,
-        MatSnackBarModule,
-        MatDialogModule,
-        NgFor
-  ],
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatDialogModule
+],
   templateUrl: './course-form.component.html',
   styleUrl: './course-form.component.scss'
 })

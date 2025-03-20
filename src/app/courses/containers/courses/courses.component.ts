@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -21,15 +21,14 @@ import { CoursesService } from '../../services/courses.service';
   selector: 'app-courses',
   imports: [
     MatCardModule,
-        MatToolbarModule,
-        NgIf,
-        CoursesListComponent,
-        MatProgressSpinnerModule,
-        MatSnackBarModule,
-        MatDialogModule,
-        MatPaginatorModule,
-        AsyncPipe
-  ],
+    MatToolbarModule,
+    CoursesListComponent,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatPaginatorModule,
+    AsyncPipe
+],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })
